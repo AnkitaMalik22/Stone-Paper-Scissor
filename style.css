@@ -1,0 +1,406 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0.1em;
+}
+body {
+  background-color: #8cc461;
+}
+
+.parent-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* ===================================================================| SCORE BOARD |======================================================================================== */
+
+.score-board {
+  margin-top: 3rem;
+  border: 2px solid #ffff;
+  border-radius: 13px;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.text-box {
+  flex: 1;
+  color: #ffff;
+  font-size: 2rem;
+  font-weight: 500;
+
+  text-transform: uppercase;
+  margin-left: 1rem;
+}
+
+.score {
+  background: #ffffff;
+  border-radius: 9px;
+  width: 130px;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+.computer {
+  margin-right: 1rem;
+}
+
+.you {
+  margin-right: 1rem;
+}
+.computer > p,
+.you > p {
+  color: #656565;
+  font-weight: 700;
+}
+
+.computer > span,
+.you > span {
+  color: #252525;
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+/* ===================================================================| PLAY BOARD |======================================================================================== */
+
+#play-board {
+  display: grid;
+  place-items: center;
+  justify-items: center;
+  position: fixed;
+  top: 50%;
+}
+/* ----------------------------------------------------------------------- LINES ----------------------------------------------------------------------------------------- */
+
+.line {
+  width: 260px;
+  height: 0px;
+  border: 7px solid #000000a3;
+}
+
+.line-2 {
+  transform: rotate(120deg);
+  position: relative;
+  left: 74px;
+  top: 82px;
+}
+.line-3 {
+  transform: rotate(60deg);
+  position: relative;
+  right: 54px;
+  top: 104px;
+}
+/* ----------------------------------------------------------------------- ACTIONS ----------------------------------------------------------------------------------------- */
+.actions {
+  position: relative;
+  right: 130%;
+}
+.action {
+  width: 150px;
+  height: 150px;
+  background-color: #ffff;
+  box-shadow: inset 3px 0px 21px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(-1px 1px 11px rgba(0, 0, 0, 0.35));
+}
+#rock,
+#paper,
+#scissor {
+  cursor: pointer;
+}
+#rock img:hover,
+#paper img:hover,
+#scissor img:hover {
+  transform: scale(1.3);
+}
+
+#rock {
+  position: relative;
+  bottom: 110px;
+  left: 225px;
+}
+
+.rock-div {
+  border: 16px solid #0074b6;
+}
+#rock:hover {
+  border: 10px solid #0074b6;
+  box-shadow: none;
+  filter: drop-shadow(-1px 1px 11px rgba(255, 255, 255, 0.35));
+  transition: all 0.01s ease-in-out;
+}
+#scissor {
+  position: relative;
+  left: 340px;
+  bottom: 207px;
+}
+.scissor-div {
+  border: 16px solid #bd00ff;
+}
+#scissor:hover {
+  border: 10px solid #bd00ff;
+  box-shadow: none;
+  filter: drop-shadow(-1px 1px 11px rgba(255, 255, 255, 0.35));
+  transition: all 0.01s ease-in-out;
+}
+#paper {
+  transform: rotate(5.27deg);
+  position: relative;
+  bottom: 261px;
+  left: 465px;
+}
+.paper-div {
+  border: 16px solid #ffa943;
+}
+#paper:hover {
+  border: 10px solid #ffa943;
+  box-shadow: none;
+  filter: drop-shadow(-1px 1px 11px rgba(255, 255, 255, 0.35));
+  transition: all 0.01s ease-in-out;
+}
+
+/* ===================================================================| RESULT BOARD |======================================================================================== */
+
+#result-board {
+  width: 60%;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  display: none;
+}
+.result {
+  text-align: center;
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #ffffff;
+}
+.result-img {
+  width: 180px !important;
+  height: 180px !important ;
+}
+#result-text-1 {
+  font-size: 38px;
+}
+#result-text-2 {
+  font-size: 28px;
+}
+/* ----------------------------------------------------------------------- BOXES ----------------------------------------------------------------------------------------- */
+
+
+.boxes {
+  border-radius: 50%;
+}
+.winner-box-3 {
+  padding: 2rem;
+  background-color: #289a27;
+}
+.winner-box-2 {
+  padding: 2rem;
+  background-color: #32a62f;
+}
+.winner-box-1 {
+  padding: 1.5rem;
+  background: #66b248;
+  box-shadow: 0px 1px 62px rgba(0, 0, 0, 0.13);
+}
+
+/* ----------------------------------------------------------------------- PICKED DIV ----------------------------------------------------------------------------------------- */
+
+.picked {
+  position: absolute;
+  z-index: 1;
+  color: #ffff;
+  text-transform: uppercase;
+
+  font-weight: 500;
+}
+.picked-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===================================================================|  BUTTONS  |======================================================================================== */
+
+.buttons {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: row;
+}
+.btn {
+  background-color: transparent;
+  color: #ffff;
+  border: 2px solid #ffff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #ffff;
+  color: #6b6b6b;
+  transition: all 0.2s ease-in-out;
+}
+
+.filled-btn {
+  background: #ffffff;
+  color: #6b6b6b;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 0.6rem 1.8rem;
+  border-radius: 8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.large {
+  font-size: 18px !important;
+  padding: 0.8rem 1.8rem !important;
+}
+.filled-btn:hover {
+  background-color: transparent;
+  color: #ffff;
+  border: 2px solid #ffff;
+  transition: all 0.2s ease-in-out;
+}
+#play-again {
+  display: block;
+}
+#replay {
+  padding: 0.5rem 1.8rem !important;
+  display: none;
+}
+#next-btn {
+  display: none;
+  margin-left: 0.6rem;
+}
+
+/* ===================================================================|  RULES MODAL  |======================================================================================== */
+
+#rules-modal {
+  position: absolute;
+  right: 40px;
+  bottom: 80px;
+  border: 3px solid darkorange;
+  width: 290px;
+  color: #ffff;
+  background-color: #004429;
+  border: 7px solid #ffffff;
+  border-radius: 13px;
+  padding: 1.8rem;
+  z-index: 7;
+  display: none;
+  
+  animation-name: closeModal ;
+  animation-duration: 0.5s;
+}
+.close {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  right: -31px;
+  top: -29px;
+  background-color: #ff0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #ffffff;
+  border-radius: 50%; 
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+.close:hover{
+  border: 3px solid #ffffff;
+  background-color: #dd0303;
+}
+#rules-modal h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.rules li svg {
+  margin-right: 7px;
+}
+.rules li {
+  font-size: 0.8rem;
+  list-style: none;
+  text-align: left;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.008em;
+  text-align: justify;
+  z-index: 4;
+}
+
+/* close animation */
+
+@keyframes closeModal {
+  0% {
+right:25px ;
+  } 
+  100%{
+   right: 40px;
+  }
+  
+}
+
+
+/* ===================================================================|  WON GAME  |======================================================================================== */
+
+.won-game {
+  background-color: #8cc461;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2;
+  color: #ffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.won-game-heading {
+  font-weight: 600;
+  font-size: 6rem;
+}
+.won-game-sub-heading {
+  font-weight: 500;
+  font-size: 2.7rem;
+  margin-bottom: 1rem;
+}
+#stars {
+  position: absolute;
+  top: 40px;
+}
+#trophy {
+  margin-top: 5rem;
+  margin-bottom: 1.5rem;
+}
